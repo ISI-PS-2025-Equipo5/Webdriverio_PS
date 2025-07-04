@@ -4,13 +4,10 @@ import { sleep } from "../pageobjects/page.js";
 
 Given(/^I am on the update contact info page$/, async () => {
   await sleep(2000);
-  await UpdateContactInfoPage.open();
+  await AccountsOverviewPage.open();
   await sleep(2000);
 });
 
-Given(/^I am on the accounts overview page$/, async () => {
-  await AccountsOverviewPage.open(); 
-});
 
 Then(/^I should see a list of all my accounts$/, async () => {
   const rows = await AccountsOverviewPage.rows;
