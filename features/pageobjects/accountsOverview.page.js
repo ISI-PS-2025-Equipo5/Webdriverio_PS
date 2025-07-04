@@ -13,10 +13,13 @@ class AccountsOverviewPage extends Page {
     const rows = await this.rows;
     return Promise.all(
       rows.map(async (row) => {
-        const balance = await row.$('//th[normalize-space()='Balance*']');
+        const balance = await row.$('.balance');
         return balance.getText();
       })
     );
+  }
+  open() {
+    return super.open('overview');
   }
 }
 
