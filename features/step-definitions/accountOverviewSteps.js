@@ -2,6 +2,11 @@ import { Given, Then } from '@wdio/cucumber-framework';
 import AccountsOverviewPage from '../pageobjects/accountsOverview.page.js';
 import { sleep } from "../pageobjects/page.js";
 
+Given(/^I am on the update contact info page$/, async () => {
+  await sleep(2000);
+  await UpdateContactInfoPage.open();
+  await sleep(2000);
+});
 
 Given(/^I am on the accounts overview page$/, async () => {
   await AccountsOverviewPage.open(); 
