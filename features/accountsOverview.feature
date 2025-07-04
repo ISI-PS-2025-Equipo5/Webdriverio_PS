@@ -8,7 +8,7 @@ Feature: Para Bank accounts overview Info Feature
   Scenario Outline: As a user, I can view all accounts into the Para Bank Website
     Given I am on the accounts overview page
     Then I should see a list of all my accounts
-    And each accout should display the current balance
+    And each account should display the current balance
 
 
 
