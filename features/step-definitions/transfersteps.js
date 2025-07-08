@@ -4,8 +4,7 @@ import { Given, When, Then } from "@wdio/cucumber-framework";
 import TransferPage from '../pageobjects/transfer.page.js';
 
 const pages = {
-  transfer: TransferPage,
-  accounts: AccountsOverviewPage
+  transfer: TransferPage
 };
 
 Given(/^I am on the transfer page$/, async () => {
