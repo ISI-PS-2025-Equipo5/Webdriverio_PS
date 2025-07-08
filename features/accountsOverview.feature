@@ -11,13 +11,13 @@ Feature: Para Bank accounts overview Info Feature
 
   Scenario Outline: Ver los detalles de una cuenta específica
     When I click on the account with number <accountNumber>
-    Then I should see the details of the account with <accountNumber> and <accountType> and <balance> and <available>
+    Then I should see the details of the account with <accountNumber> and <accountType> and <balance> and <availableBalance>
     And I should see recent transactions or a no-transactions message
 
     Examples:
-      | accountNumber | accountType | balance  | available |
-      | 13455         | CHECKING    | $100.00  | $100.00   |
-      | 13566         | SAVINGS     | $50.00   | $50.00    |
+      | accountNumber | accountType | balance  | availableBalance |
+      | 13455         | CHECKING    | $100.00  | $100.00          |
+      | 13566         | SAVINGS     | $50.00   | $50.00           |
 
   Scenario Outline: Cambiar de cuenta y ver actualización
     Given I am on the accounts overview page
