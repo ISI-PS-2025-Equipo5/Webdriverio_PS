@@ -2,7 +2,7 @@ Feature: Para Bank accounts overview Info Feature
 
   Background:
     Given I am on the login page
-    When I login with eliza and 12345
+    When I login with yeliza and 12345678
 
   Scenario: As a user, I can view all accounts into the Para Bank Website
     Given I am on the accounts overview page
@@ -16,8 +16,8 @@ Feature: Para Bank accounts overview Info Feature
 
     Examples:
       | accountNumber | accountType | balance  | availableBalance |
-      | 16452         | CHECKING    | $203.50  | $203.50          |
-      | 14787         | CHECKING    | $100.00  | $100.00          |
+      | 25776         | CHECKING    | $411.50  | $515.50          |
+      | 25998         | CHECKING    | $104.00  | $104.00          |
 
   Scenario Outline: Cambiar de cuenta y ver actualización
     Given I am on the accounts overview page
@@ -27,8 +27,8 @@ Feature: Para Bank accounts overview Info Feature
 
     Examples:
       | accountNumber |
-      | 16452         |
-      | 16785         |
+      | 25998         |
+    
 
 
 
