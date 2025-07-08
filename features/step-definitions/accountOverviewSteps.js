@@ -30,6 +30,7 @@ Then(/^each account should display the current balance$/, async () => {
 // Escenario 2: Ver detalles de una cuenta específica
 // ------------------------
 When(/^I click on the account with number (\d+)$/, async (accountNumber) => {
+  console.log("Intentando hacer clic en la cuenta:", accountNumber);
   await AccountsOverviewPage.clickAccountByNumber(accountNumber);
 });
 
