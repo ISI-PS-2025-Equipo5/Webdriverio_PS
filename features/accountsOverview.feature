@@ -16,7 +16,7 @@ Feature: Para Bank accounts overview Info Feature
 
     Examples:
       | accountNumber | accountType | balance  | availableBalance |
-      | 14454         | CHECKING    | $515.50  | $515.50          |
+      | 16452         | CHECKING    | $203.50  | $203.50          |
       | 14787         | CHECKING    | $100.00  | $100.00          |
 
   Scenario Outline: Cambiar de cuenta y ver actualización
@@ -27,8 +27,8 @@ Feature: Para Bank accounts overview Info Feature
 
     Examples:
       | accountNumber |
-      | 14454         |
-      | 14787         |
+      | 16452         |
+      | 16785         |
 
 
 
