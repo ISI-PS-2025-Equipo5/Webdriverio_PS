@@ -1,12 +1,29 @@
+
 import Page from './page.js';
+import loginPage from './login.page.js';
 
 /**
  * Esta subpagina contiene especificamente los selectores y los metodos para la pagina de transferencias
  */
 
 class TransferPage extends Page {
+    
+    //Traemos los selectores para el login porque es necesario para poder hacer las transferencias
+
+     get inputUsername () {
+        return $("//input[@name='username']");
+    }
+
+    get inputPassword () {
+        return $("//input[@name='password']");
+    }
+
+    get btnSubmit () {
+        return $("//input[@value='Log In']");
+    }
+
     /**
-     * definimos los selectores usando gets
+     * definimos los selectores de la tranferencia usando gets
      */
     get inputAmount () {
         return $("//input[@id='amount']");
