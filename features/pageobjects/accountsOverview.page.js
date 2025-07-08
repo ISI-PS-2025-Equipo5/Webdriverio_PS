@@ -1,25 +1,30 @@
 import Page from "./page.js";
 
 class AccountsOverviewPage extends Page {
-  get tableAccounts() {
+  get accountTable() {
     return $('#accountTable');
   }
 
-  get rows() {
-    return this.tableAccounts.$$('tbody tr');
+  get accountrows() {
+    return this.accountTable.$$('tbody tr');
   }
 
-  async getBalances() {
-    const rows = await this.rows;
+  async getAccountNumbers() {
+    const rows = await this.accountRows;
     return Promise.all(
       rows.map(async (row) => {
-        const balance = await row.$('.balance');
-        return balance.getText();
+        const link = await row.$('a');
+        return link.getText();
       })
     );
   }
+  async clickAccountByNumber(accountNumber) {
+  const accountLink = await $(`=${accountNumber}`);
+  await expect(accountLink).toBeExisting();
+  await accountLink.click();
+  }
   open() {
-    return super.open('overview');
+    return super.open('overview');//Ruta para la página overview
   }
 }
 
