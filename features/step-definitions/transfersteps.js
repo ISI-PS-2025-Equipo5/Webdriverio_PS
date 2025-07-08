@@ -5,7 +5,6 @@ import TransferPage from '../pageobjects/transfer.page.js';
 
 const pages = {
   transfer: TransferPage,
-  accounts: AccountsOverviewPage
 };
 
 Given(/^I am on the transfer page$/, async () => {
