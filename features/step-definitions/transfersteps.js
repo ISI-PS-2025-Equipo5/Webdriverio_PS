@@ -7,7 +7,7 @@ const pages = {
   transfer: TransferPage
 };
 
-Given(/^I am on the transfer page$/, async () => {
+Given(/^I am in the transfer page$/, async () => {
   await TransferPage.open();
 });
 
