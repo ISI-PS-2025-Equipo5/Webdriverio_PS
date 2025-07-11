@@ -13,14 +13,19 @@ Given(/^I am on the accounts overview page$/, async () => {
 });
 Then(/^I should see a list of all my accounts with their current and available balances$/, async () => {
   const rows = await AccountsOverviewPage.getAccountRows();
-  expect(rows.length).toBeGreaterThan(1); // asumiendo que la primera fila es encabezado
 
-  for (let i = 1; i < rows.length; i++) {
-    const cells = await rows[i].$$('td');
+    for (const row of rows) {
+    const cells = await row.$$('td');
+
+    const accountLink = await cells[0].$('a');
+    const accountNumber = await accountLink.getText();
     const balance = await cells[1].getText();
     const available = await cells[2].getText();
 
-    console.log(`Row ${i} - Balance: "${balance}", Available: "${available}"`);
+    console.log(`Cuenta: ${accountNumber}, Balance: ${balance}, Disponible: ${available}`);
+
+    await expect(balance).not.toBe('');
+    await expect(available).not.toBe('');
 
     await expect(balance).toMatch(/^\$\d+\.\d{2}$/);
     await expect(available).toMatch(/^\$\d+\.\d{2}$/);
