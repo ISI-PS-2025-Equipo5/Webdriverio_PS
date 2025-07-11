@@ -11,11 +11,18 @@ Given(/^I am on the accounts overview page$/, async () => {
   await sleep(2000);
 
 });
+Then(/^I should see a list of all my accounts with their current and available balances$/, async () => {
+  const rows = await AccountsOverviewPage.getAccountRows();
+  expect(rows.length).toBeGreaterThan(1); // asumiendo que la primera fila es encabezado
 
-Then(/^I should see a list of all my accounts$/, async () => {
-  await $('#accountTable').waitForDisplayed({ timeout: 5000 });
-  const accounts = await AccountsOverviewPage.getAccountNumbers();
-  expect(accounts.length).toBeGreaterThan(0);
+  for (let i = 1; i < rows.length; i++) {
+    const cells = await rows[i].$$('td');
+    const balance = await cells[1].getText();
+    const available = await cells[2].getText();
+
+    await expect(balance).toMatch(/^\$\d+\.\d{2}$/);
+    await expect(available).toMatch(/^\$\d+\.\d{2}$/);
+  }
 });
 
 When(/^I click on the first account in the list$/, async () => {
