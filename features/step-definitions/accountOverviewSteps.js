@@ -20,6 +20,8 @@ Then(/^I should see a list of all my accounts with their current and available b
     const balance = await cells[1].getText();
     const available = await cells[2].getText();
 
+    console.log(`Row ${i} - Balance: "${balance}", Available: "${available}"`);
+
     await expect(balance).toMatch(/^\$\d+\.\d{2}$/);
     await expect(available).toMatch(/^\$\d+\.\d{2}$/);
   }
