@@ -2,7 +2,7 @@ Feature: Parabank payment Feature
 
 Background:
     Given I am on the login page
-    When I login with jaider34 and jaider
+    When I login with john and demo
 
 Scenario: Pago exitoso a un beneficiario
     Given yo estoy en la pagina de bill pay

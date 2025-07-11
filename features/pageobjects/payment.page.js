@@ -1,4 +1,4 @@
-import Page from './page.js';
+import Page, { sleep } from './page.js';
 
 
 class PaymentsPage  extends Page{
@@ -40,6 +40,7 @@ class PaymentsPage  extends Page{
     // Actions
   
     async payment(PayeeName,Address,City, State,ZipCode,Phone,Account,VerifyAccount,Amount){
+      await sleep(2000)
       await this.PayeeName.setValue(PayeeName);
       await this.Address.setValue(Address);
       await this.City.setValue(City);
@@ -49,17 +50,14 @@ class PaymentsPage  extends Page{
       await this.Account.setValue(Account);
       await this.VerifyAccount.setValue(VerifyAccount);
       await this.Amount.setValue(Amount);
-      
+      await browser.execute(() => {
+        window.scrollTo(0, 0);
+      });      
     }
   
   
     async confirmarPago() {
       await this.enviarPago.click();
-    }
-  
-    async validarExito() {
-      await expect(this.mensajeExito).toBeDisplayed();
-      await expect(this.mensajeExito).toHaveTextContaining('Pago realizado con éxito');
     }
 
     open(){
