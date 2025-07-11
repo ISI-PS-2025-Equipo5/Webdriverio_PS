@@ -1,4 +1,4 @@
-import { Given, When, Then, And } from '@wdio/cucumber-framework';
+import { Given, When, Then } from '@wdio/cucumber-framework';
 import AccountsOverviewPage from '../pageobjects/accountsOverview.page.js';
 import AccountDetailsPage from "../pageobjects/accountDetails.page.js";
 
@@ -47,7 +47,7 @@ Then(
   }
 );
 
-And(/^I should see the account type "(\w+)", balance "(\$\d+\.\d{2})" and available balance "(\$\d+\.\d{2})"$/, 
+Then(/^I should see the account type "(\w+)", balance "(\$\d+\.\d{2})" and available balance "(\$\d+\.\d{2})"$/, 
   async (accountType, balance, availableBalance) => {
     const actual = await AccountDetailsPage.getAllAccountDetails();
 
@@ -57,7 +57,7 @@ And(/^I should see the account type "(\w+)", balance "(\$\d+\.\d{2})" and availa
   
 });
 
-And(/^I should see either the recent transactions table or a message saying there are no transactions$/, async () => {
+Then(/^I should see either the recent transactions table or a message saying there are no transactions$/, async () => {
   const hasTable = await AccountDetailsPage.hasTransactions();
 
   if (hasTable) {
@@ -84,7 +84,7 @@ When(/^I go back to the accounts overview page$/, async () => {
   await sleep(1000); // espera a que cargue el overview
 });
 
-And(/^I click on the account number "(\d+)"$/, async (accountNumber) => {
+Then(/^I click on the account number "(\d+)"$/, async (accountNumber) => {
   await AccountsOverviewPage.clickAccountByNumber(accountNumber);
 });
 
