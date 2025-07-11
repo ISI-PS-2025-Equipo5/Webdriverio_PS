@@ -33,9 +33,17 @@ class TransferPage extends Page {
     get inputFromAccount () {
         return $("//select[@id='fromAccountId']");
     }
+
+    get selectFromAccount(){
+        return $("//select[@id='fromAccountId']//option[@value='12678']")
+    }
     
     get inputToAccount () {
         return $("//select[@id='toAccountId']");
+    }
+
+    get selectToAccount () {
+        return $("//select[@id='toAccountId']//option[@value='12900']");
     }
 
     get btnTransfer () {
@@ -49,10 +57,12 @@ class TransferPage extends Page {
    //Aca va la logica, los atributos que pusimos en los features y los metodos que creamos en las linea anteriores
    //Teniendo en cuenta cual atributo de cual feature corresponde a cada uno de los atributos que creamos en el page object
 
-    async transfer (amount, fromAccount, toAccount) {
+    async transfer (amount) {
         await this.inputAmount.setValue(amount);
-        await this.inputFromAccount.setValue(fromAccount);
-        await this.inputToAccount.setValue(toAccount);
+        await this.inputFromAccount.click(); //primero damos clic
+        await this.selectFromAccount.click(); //seleccionamos
+        await this.inputToAccount.click(); //segundo clic
+        await this.selectToAccount.click(); //seleccionamos
         await this.btnTransfer.click();
     }
 
