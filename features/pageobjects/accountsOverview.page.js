@@ -11,12 +11,15 @@ class AccountsOverviewPage extends Page {
   }
 
   async getAccountNumbers() {
-    const rows = await this.getAccountRows;
+    const rows = await this.accountRows;
     return Promise.all(
-      rows.map(async (row) => {
+      rows.map(async (row, index) => {
         const link = await row.$('a');
-      
-        return await link.getText();
+        const exists = await link.isExisting();
+        if (!exists) {
+          throw new Error('Fila ${index + 1} no tiene un enlace de cuenta.');
+        }
+        return link.getText();
       })
     );
   }
@@ -27,7 +30,7 @@ class AccountsOverviewPage extends Page {
   }
 
   async clickAccountByNumber(accountNumber) {
-    const accountLink = await $(`//a[normalize-space()='${accountNumber}']`);
+    const accountLink = await $('=${accountNumber}');
     const exists = await accountLink.isExisting();
   
     if (!exists) {

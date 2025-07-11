@@ -1,11 +1,7 @@
 
 import { Given, When, Then } from "@wdio/cucumber-framework";
-
+import LoginPage from '../pageobjects/login.page.js';
 import TransferPage from '../pageobjects/transfer.page.js';
-
-const pages = {
-  transfer: TransferPage
-};
 
 Given(/^I am in the transfer page$/, async () => {
   await TransferPage.open();
@@ -18,21 +14,13 @@ When(/^I transfer with (.*) and (.*) and (.*)$/,
         fromAccount,
         toAccount
       );
-      await mysleep(1000);
     }
   );
 
-Then(/^I should see a text register result saying (.*)$/,
-    async (message) => {
-  if (message == "successful transfer") {
-    // transfer successful
-    await expect($('.title')).toBeExisting();
-    await expect($('.title')).toHaveTextContaining(message);
-  }
-  else{
-    // transfer failed
-    await expect($('.error')).toBeExisting();
-    await expect($('.error')).toHaveTextContaining(message);
-  }
-  await mysleep(1000);
+Then(/^I should see a transfer result saying (.*) from (.*) to (.*)$/,
+    async (amount, fromAccount, toAccount) => {
+      const expectedMessage = `$${amount}.00 has been transferred from ${fromAccount} to ${toAccount}.`;
+      const result = await $("//div[@id='showResult']//p[1]");
+      await expect(result).toBeDisplayed();
+      await expect(result).toHaveText(expectedMessage);
 });
