@@ -11,12 +11,15 @@ class AccountsOverviewPage extends Page {
 
   async getAccountNumbers() {
     const rows = await this.accountRows;
+     // Saltar la primera fila (encabezados)
+    const dataRows = rows.slice(1);
+    
     return Promise.all(
-      rows.map(async (row) => {
+      rows.map(async (row, index) => {
         const link = await row.$('a');
         const exists = await link.isExisting();
         if (!exists) {
-          throw new Error('Fila ${index + 1} no tiene un enlace de cuenta.');
+          throw new Error('Fila ${index + 2} no tiene un enlace de cuenta.');
         }
         return link.getText();
       })
