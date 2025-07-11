@@ -5,12 +5,12 @@ class AccountsOverviewPage extends Page {
     return $('#accountTable');
   }
 
-  get accountrows() {
+  get accountRows() {
     return this.accountTable.$$('tbody tr');
   }
 
   async getAccountNumbers() {
-    const rows = await this.accountrows;
+    const rows = await this.accountRows;
     return Promise.all(
       rows.map(async (row) => {
         const link = await row.$('a');
@@ -25,8 +25,12 @@ class AccountsOverviewPage extends Page {
     if (!exists) {
       throw new Error(`La cuenta con número ${accountNumber} no se encuentra en la tabla.`);
     }
-  
+    await accountLink.scrollIntoView();  //
     await accountLink.click();
+  }
+  //Verifiica que la tabla de cuentas este desplegada
+  async isAccountTableVisible(){
+    return this.accountTable.isDisplayed();
   }
  
   open() {
