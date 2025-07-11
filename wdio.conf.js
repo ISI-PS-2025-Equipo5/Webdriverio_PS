@@ -143,6 +143,8 @@ export const config = {
         // <string[]> (file/dir) require files before executing features
         require: [
             "./features/step-definitions/steps.js",
+            "./features/step-definitions/accountOverviewSteps.js",
+            "./features/step-definitions/transfersteps.js",
             "./features/step-definitions/paymentSteps.js"
                  ],
         // <boolean> show full backtrace for errors
