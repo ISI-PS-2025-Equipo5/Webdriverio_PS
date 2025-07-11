@@ -2,7 +2,7 @@ Feature: Para Bank accounts overview Info Feature
 
   Background:
     Given I am on the login page
-    When I login with yenny1 and 12345
+    When I login with yenny and 12345
 
   Scenario: Consultar el estado de mis cuentas y navegar entre ellas
     Given I am on the accounts overview page
