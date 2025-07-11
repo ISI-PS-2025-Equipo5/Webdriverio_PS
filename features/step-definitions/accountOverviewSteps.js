@@ -14,6 +14,7 @@ Given(/^I am on the accounts overview page$/, async () => {
 });
 
 Then(/^I should see a list of all my accounts$/, async () => {
+  await $('#accountTable').waitForDisplayed({ timeout: 5000 });
   const accounts = await AccountsOverviewPage.getAccountNumbers();
   await expect(accounts.length).toBeGreaterThan(0);
 });

@@ -14,6 +14,10 @@ class AccountsOverviewPage extends Page {
     return Promise.all(
       rows.map(async (row) => {
         const link = await row.$('a');
+        const exists = await link.isExisting();
+        if (!exists) {
+          throw new Error('Fila ${index + 1} no tiene un enlace de cuenta.');
+        }
         return link.getText();
       })
     );
