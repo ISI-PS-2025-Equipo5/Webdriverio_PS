@@ -5,28 +5,41 @@ class AccountsOverviewPage extends Page {
     return $('#accountTable');
   }
 
-  get accountrows() {
+  get accountRows() {
     return this.accountTable.$$('tbody tr');
   }
 
   async getAccountNumbers() {
-    const rows = await this.accountrows;
+    const rows = await this.accountRows;
+     // Saltar la primera fila (encabezados)
+    const dataRows = rows.slice(1);
+    
     return Promise.all(
-      rows.map(async (row) => {
+      rows.map(async (row, index) => {
         const link = await row.$('a');
+        const exists = await link.isExisting();
+        if (!exists) {
+          throw new Error('Fila ${index + 2} no tiene un enlace de cuenta.');
+        }
         return link.getText();
       })
     );
   }
   async clickAccountByNumber(accountNumber) {
-    const accountLink = await $('=${accountNumber}');
+    const selector = `//a[normalize-space()='${accountNumber}']`;
+    const accountLink = await $(selector); 
+
     const exists = await accountLink.isExisting();
   
     if (!exists) {
       throw new Error(`La cuenta con número ${accountNumber} no se encuentra en la tabla.`);
     }
-  
+    await accountLink.scrollIntoView();  //
     await accountLink.click();
+  }
+  //Verifiica que la tabla de cuentas este desplegada
+  async isAccountTableVisible(){
+    return this.accountTable.isDisplayed();
   }
  
   open() {
