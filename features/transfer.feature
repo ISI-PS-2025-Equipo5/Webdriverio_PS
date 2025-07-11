@@ -1,14 +1,14 @@
 Feature: Para Bank Transfer Feature
 
   Background:
-    Given: I am on the login  in parabank page 
-    when i transfer with username john and password demo
+    Given I am on the login page 
+    When I login with cifu and 1234
 
-  Scenario Outline: As a user, I can transfer into the Parabank Page
+  Scenario Outline: As a user, I want a transfer
     Given I am in the transfer page
-    When I transfer with <Amount> and <FromAccount> and <toAccount>
-    Then I should see a text register result saying <message>
+    When I transfer with <amount> and <fromAccount> and <toAccount>
+    Then I should see a transfer result saying <amount> from <fromAccount> to <toAccount>
 
     Examples: 
-      | Amount     | FromAccount    | toAccount     | message             |
-      | 15         | 13344          | 14232         | successful transfer |
+      | amount     | fromAccount    | toAccount     |
+      | 15         | 21669          | 21891         |

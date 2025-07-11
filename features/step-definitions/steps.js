@@ -1,12 +1,15 @@
+
 import { Given, When, Then } from "@wdio/cucumber-framework";
 
 import LoginPage from '../pageobjects/login.page.js';
 import AccountsOverviewPage from '../pageobjects/accountsOverview.page.js';
+import TransferPage from '../pageobjects/transfer.page.js';
 
 
 const pages = {
   login: LoginPage,
-  accounts: AccountsOverviewPage
+  accounts: AccountsOverviewPage,
+  transfer: TransferPage
 };
 
 Given(/^I am on the (\w+) page$/, async (page) => {

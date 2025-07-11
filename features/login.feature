@@ -8,4 +8,4 @@ Feature: Para Bank Login Feature
     Examples: 
       | username          | password | message           |
       | invalidUsername   | password | Error!            |
-      | yeliza        | 12345678 | Accounts Overview |
+      | john              | demo     | Accounts Overview |

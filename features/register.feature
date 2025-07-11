@@ -6,8 +6,7 @@ Feature: Para Bank Register Feature
     Then I should see a text on the Register result saying <message>
 
     Examples: 
-      | firstName          | lastName | address           | city          | state | zipCode | phone          | ssn | username      | password          | confirmPassword | 
-      | For                | Ning     | cll 13            |New York       | USA   | 333     | 12542          |5262 | grupo5        | mayo17            | mayo17          |
-      | For                | Ning     | cll 13            |New York       | USA   | 333     | 12542          |5262 | grupo5        | mayo17            | mayo17          |
-      | For                | Ning     | cll 13            |New York       | USA   | 333     | 12542          |5262 | grupo5        | mayo17            | mayo17          |
-      | For                | Ning     | cll 13            |New York       | USA   | 333     | 12542          |5262 | grupo5        | mayo17            | mayo17          |
+      | firstName          | lastName | address           | city          | state | zipCode | phone          | ssn | username      | password          | confirmPassword | message                      |
+      | For                | Ning     | cll 13            |New York       | USA   | 333     | 12542          |5262 | grupo5        | mayo17            | mayo17          | welcome                      |
+      | For                | Ning     | cll 13            |New York       | USA   | 333     | 12542          |5262 | grupo5-2      | mayo17            | mayo17          | password did not match       |
+      | For                | Ning     | cll 13            |New York       | USA   | 333     | 12542          |5262 | john          | mayo17            | mayo17          | this username already exist. |
