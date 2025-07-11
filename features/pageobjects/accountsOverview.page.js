@@ -23,7 +23,8 @@ class AccountsOverviewPage extends Page {
     );
   }
   async clickAccountByNumber(accountNumber) {
-    const accountLink = await $('=${accountNumber}');
+    const selector = '//a[normalize-space()='${accountNumber}']';
+    const accountLink = await $(selector);
     const exists = await accountLink.isExisting();
   
     if (!exists) {
